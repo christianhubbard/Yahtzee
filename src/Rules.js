@@ -57,21 +57,22 @@ class SumDistro extends Rule {
 
 /** Check if full house (3-of-kind and 2-of-kind) */
 
-class FullHouse {
+class FullHouse extends Rule {
   // TODO
   evalRoll = dice => {
     const d = new Set(dice);
+    console.log("this.score", this.score)
     return d.size === 2 ? this.score : 0;
   }
 }
 
 /** Check for small straights. */
 
-class SmallStraight {
+class SmallStraight extends Rule {
   evalRoll = dice => {
     const d = new Set(dice);
     let possibleSums = [10,14,18];
-
+    console.log("this.score", this.score)
     // large straight must be 5 different dice & only one can be a 1 or a 6
     return d.size === 4 && possibleSums.includes(this.sum(dice)) ? this.score : 0;
   };
@@ -82,7 +83,7 @@ class SmallStraight {
 class LargeStraight extends Rule {
   evalRoll = dice => {
     const d = new Set(dice);
-
+    console.log("this.score", this.score)
     // large straight must be 5 different dice & only one can be a 1 or a 6
     return d.size === 5 && (!d.has(1) || !d.has(6)) ? this.score : 0;
   };
