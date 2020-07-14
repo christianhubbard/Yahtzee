@@ -9,7 +9,7 @@ class ScoreTable extends Component {
     const {scores} = this.props;
     let totalScore = 0
     for(let key in scores) {
-      if(scores[key]) totalScore+= scores[key]
+      if(scores[key]) totalScore += scores[key];
     }
     return totalScore
   }
@@ -45,7 +45,8 @@ class ScoreTable extends Component {
             </tbody>
           </table>
         </section>
-      <h2>Total Score: {this.getTotalScore()}</h2>
+        <h2>Total Score: {this.getTotalScore()}</h2>
+        {!Object.values(scores).includes(undefined) && <div className="Game-button-wrapper"><button className="Game-reroll" onClick={() => this.props.replay()}>Replay?</button></div>}
       </div>
     )
   }

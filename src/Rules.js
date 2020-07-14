@@ -61,7 +61,7 @@ class FullHouse extends Rule {
   // TODO
   evalRoll = dice => {
     const d = new Set(dice);
-    console.log("this.score", this.score)
+
     return d.size === 2 ? this.score : 0;
   }
 }
@@ -71,10 +71,10 @@ class FullHouse extends Rule {
 class SmallStraight extends Rule {
   evalRoll = dice => {
     const d = new Set(dice);
-    let possibleSums = [10,14,18];
-    console.log("this.score", this.score)
-    // large straight must be 5 different dice & only one can be a 1 or a 6
-    return d.size === 4 && possibleSums.includes(this.sum(dice)) ? this.score : 0;
+
+    if (d.has(2) && d.has(3) && d.has(4) && (d.has(1) || d.has(5))) return this.score
+    if (d.has(3) && d.has(4) && d.has(5) && (d.has(2) || d.has(6))) return this.score
+    return 0;
   };
 }
 

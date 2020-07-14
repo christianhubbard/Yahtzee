@@ -34,6 +34,7 @@ class Game extends Component {
     this.doScore = this.doScore.bind(this);
     this.toggleLocked = this.toggleLocked.bind(this);
     this.animateRoll = this.animateRoll.bind(this);
+    this.replay = this.replay.bind(this);
   }
 
   componentDidMount(){
@@ -43,7 +44,7 @@ class Game extends Component {
   animateRoll(){
     this.setState({rolling: true}, () => { 
       setTimeout(this.roll, 750);
-    })
+    });
   }
 
   roll(evt) {
@@ -56,7 +57,6 @@ class Game extends Component {
       rollsLeft: st.rollsLeft - 1,
       rolling: false
     }));
-  
   }
 
   toggleLocked(idx) {
@@ -87,6 +87,31 @@ class Game extends Component {
     return messages[this.state.rollsLeft]
   }
 
+  replay(){
+    this.setState({
+      dice: Array.from({ length: NUM_DICE }).map(d => 5),
+      locked: Array(NUM_DICE).fill(false),
+      rollsLeft: NUM_ROLLS,
+      rolling: false,
+      scores: {
+        ones: undefined,
+        twos: undefined,
+        threes: undefined,
+        fours: undefined,
+        fives: undefined,
+        sixes: undefined,
+        threeOfKind: undefined,
+        fourOfKind: undefined,
+        fullHouse: undefined,
+        smallStraight: undefined,
+        largeStraight: undefined,
+        yahtzee: undefined,
+        chance: undefined
+      }
+    })
+    this.animateRoll()
+  }
+
   render() {
     const {dice, locked, rollsLeft, rolling, scores} = this.state
     return (
@@ -114,7 +139,7 @@ class Game extends Component {
             </div>
           </section>
         </header>
-        <ScoreTable doScore={this.doScore} scores={scores} />
+        <ScoreTable doScore={this.doScore} scores={scores} replay={this.replay}/>
       </div>
     );
   }
