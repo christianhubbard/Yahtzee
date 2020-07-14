@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 14px;
+  min-width:650px;
 }
 h2 {
   font-weight: 100;
