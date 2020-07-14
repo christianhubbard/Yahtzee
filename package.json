@@ -2,7 +2,7 @@
   "name": "yahtzee",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://christianhubbard.github.io/yahtzee",
+  "homepage": "http://christianhubbard.github.io/Yahtzee",
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
