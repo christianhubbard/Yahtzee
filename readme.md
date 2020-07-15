@@ -1,6 +1,8 @@
 # Yahtzee!
 
 ### Welcome to my Yahtzee game!
+The deployed version of this project can be found [here](https://christianhubbard.github.io/Yahtzee/).
+
 Click the button to roll your dice, click your dice to lock them and prevent re-rolling.
 ![](https://media.giphy.com/media/UVkfz8wbVZQNrPWVJP/giphy.gif)
 
